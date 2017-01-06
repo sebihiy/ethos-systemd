@@ -16,8 +16,10 @@ ExecStartPre=/usr/bin/bash -c "[ -f /home/core/.dockercfg ] || exit 1"
 ExecStartPre=/usr/bin/bash -c "[ -f /opt/mesos/credentials ] || exit 1"
 ExecStartPre=/usr/bin/sh -c ". /etc/profile.d/etcdctl.sh && docker pull $($IMAGE)"
 
+ExecStartPre=-/usr/bin/docker stop booster
 ExecStartPre=-/usr/bin/docker kill booster
 ExecStartPre=-/usr/bin/docker rm booster
+
 ExecStart=/usr/bin/sh -c ". /etc/profile.d/etcdctl.sh && /usr/bin/docker run \
   --name booster \
   --net=host \
@@ -26,7 +28,7 @@ ExecStart=/usr/bin/sh -c ". /etc/profile.d/etcdctl.sh && /usr/bin/docker run \
   -e BOOSTER_NO_PERSISTENCE=true \
   -e BOOSTER_ENABLED=$(/home/core/ethos-systemd/v1/lib/etcdauth.sh get /booster/config/enabled) \
   -e BOOSTER_NODES=$(/home/core/ethos-systemd/v1/lib/etcdauth.sh get --quorum /booster/nodes) \
-  -e BOOSTER_ROLES=mesos_agent \
+  -e BOOSTER_ROLES=worker \
   $($IMAGE)"
 
 ExecStop=-/usr/bin/docker stop booster
