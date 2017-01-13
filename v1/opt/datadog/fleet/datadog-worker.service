@@ -18,6 +18,7 @@ ExecStartPre=-/usr/bin/docker kill dd-agent-worker
 ExecStartPre=-/usr/bin/docker rm -f dd-agent-worker
 ExecStart=/usr/bin/bash -c \
 "if [[ -f /etc/profile.d/etcdctl.sh ]]; then source /etc/profile.d/etcdctl.sh;fi && sudo -E /usr/bin/docker run --name dd-agent-worker -h `hostname` \
+--privileged --userns=host \
 -p 8125:8125/udp \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v /proc/:/host/proc/:ro \
