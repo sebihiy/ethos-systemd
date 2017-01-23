@@ -3,10 +3,13 @@
 # NOTE: this script will need to be sudo'ed for access to /var/lib/docker
 
 echo "Removing dead containers & volumes"
-docker rm $(docker ps -a -q) 2> /dev/null | xargs -n 1 -IXX echo "docker: Removing dead container XX"  
+docker rm -v $(docker ps -a -q) 2> /dev/null | xargs -n 1 -IXX echo "docker: Removing dead container XX"
  
 echo "Removing images"
-docker rmi -f $(docker images -q -a -f dangling=true) 2> /dev/null | xargs -n 1 -IXX echo "docker: Removing dead image XX"  
+docker rmi -f $(docker images -q -a -f dangling=true) 2> /dev/null | xargs -n 1 -IXX echo "docker: Removing dead image XX"
+
+echo "Removing volumes"
+docker volume rm $(docker volume ls -qf dangling=true) 2> /dev/null | xargs -n 1 -IXX echo "docker: Removing dead volume XX"
 
 FSDRIVER=$(docker info|grep Storage|cut -d: -f2|tr -d [:space:])
 echo "Driver $FSDRIVER"
