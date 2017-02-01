@@ -1,9 +1,9 @@
-#!/bin/bash -e
+#!/bin/bash
 
 echo "==== Removing images"
 # generate system images list
 for i in $(/home/core/ethos-systemd/v1/lib/etcdauth.sh ls images); do
-    /home/core/ethos-systemd/v1/lib/etcdauth.sh  get $i|sed -e 's/index.docker.io\///g'|sed -e 's/\:.*//g';
+    /home/core/ethos-systemd/v1/lib/etcdauth.sh get $i|sed -e 's/index.docker.io\///g'|sed -e 's/\:.*//g';
 done > systemImages
 # these two are from other unit files that do not use etcd /images
 echo "aquasec/agent-data" >> systemImages
@@ -15,7 +15,7 @@ docker images -a|grep -v -e 'REPOSITORY'|awk '{print $1}'|tr " " "\n" > existing
 # list of images that exist on host, not in systemImages list
 deletionCandidates=$(comm -23 <(sort existingImages) <(sort systemImages))
 
-if [ -z $deletionCandidates ]; then
+if [ -z "$deletionCandidates" ]; then
     echo "No images to delete."
 else
     echo "Going to attempt to delete images:"
