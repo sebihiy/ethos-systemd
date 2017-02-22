@@ -13,8 +13,6 @@ FLUENTD_MONITOR_PORT=$(/home/core/ethos-systemd/v1/lib/etcdauth.sh get /logging/
 /usr/bin/docker run \
   --name fluentd-forwarder \
   --label com.swipely.iam-docker.iam-profile="$CONTAINERS_ROLE" \
-  --privileged \
-  --userns=host \
   -p $FLUENTD_FORWARDER_PORT:5170 \
   -p $FLUENTD_MONITOR_PORT:24220 \
   -e FLUENTD_CONF=fluentd-universal.conf \
