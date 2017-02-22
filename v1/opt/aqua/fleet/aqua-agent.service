@@ -22,9 +22,10 @@ ExecStart=/usr/bin/bash -c  "if [[ -f /etc/profile.d/etcdctl.sh ]]; then source 
 sudo docker run --name=aqua-launcher -v /var/run/docker.sock:/var/run/docker.sock  \
 -e SCALOCK_SERVER=$($SCALOCK_GATEWAY_ENDPOINT)  \
 -e SCALOCK_TOKEN=$($SCALOCK_TOKEN)  \
--e RESTART_CONTAINERS=no \
+-e RESTART_CONTAINERS=yes \
 -e DOCKER_SCHEDULER=fleet  \
 -e AQUA_RUN_WATCHER=yes  \
+-e AQUA_MODE=CONTAINER \
 -e SILENT=yes  $($IMAGE)"
 
 [Install]
