@@ -3,6 +3,7 @@
 Description=Runs Amazon ECR Login every 6 hours
 
 [Timer]
+OnBootSec=1min
 OnUnitActiveSec=6h
 Unit=aws-ecr-login.service
 
