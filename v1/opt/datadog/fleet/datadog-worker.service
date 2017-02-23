@@ -22,6 +22,7 @@ ExecStart=/usr/bin/bash -c \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v /proc/:/host/proc/:ro \
 -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
+-v /home/core/.dockercfg:/home/core/.dockercfg \
 -e API_KEY=`/home/core/ethos-systemd/v1/lib/etcdauth.sh get /datadog/config/api-key` \
 -e HOST_IP=`hostname -i` \
 -e STACK_NAME=$STACK_NAME \
