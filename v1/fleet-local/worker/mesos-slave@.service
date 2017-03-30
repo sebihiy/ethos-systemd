@@ -38,6 +38,8 @@ ExecStart=/usr/bin/bash -c "source /etc/profile.d/etcdctl.sh && \
     -v /lib64/libdevmapper.so:/lib/libdevmapper.so.1.02:ro \
     -v /lib64/libsystemd.so:/lib/libsystemd.so.0:ro \
     -v /lib64/libgcrypt.so:/lib/libgcrypt.so.20:ro \
+    -v /lib64/libgpg-error.so.0:/lib/x86_64-linux-gnu/libgpg-error.so.0:ro \
+    -v /lib64/libseccomp.so.2:/lib/x86_64-linux-gnu/libseccomp.so.2:ro \
     -v /var/lib/mesos/slave:/var/lib/mesos/slave \
     -v /opt/mesos/credentials:/opt/mesos/credentials:ro \
     $($IMAGE) \
