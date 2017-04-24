@@ -55,6 +55,7 @@ fi
   -e FD_ALLOW_MARATHON_UNVERIFIED_TLS=`/home/core/ethos-systemd/v1/lib/etcdauth.sh get /flight-director/config/allow-marathon-unverified-tls` \
   -e FD_SCALER_PROTOCOL=`/home/core/ethos-systemd/v1/lib/etcdauth.sh get /flight-director/config/scaler-protocol` \
   -e FD_SCALER_ENDPOINT=`/home/core/ethos-systemd/v1/lib/etcdauth.sh get /flight-director/config/scaler-endpoint` \
+  -e FD_AQUA_ENABLED=`/home/core/ethos-systemd/v1/lib/etcdauth.sh get /flight-director/config/aqua-enabled` \
   -e FD_AQUA_PROTOCOL=$AQUA_PROTOCOL \
   -e FD_AQUA_ENDPOINT=$AQUA_ENDPOINT \
   -e FD_AQUA_USER=$AQUA_USER \
