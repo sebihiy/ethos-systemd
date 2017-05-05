@@ -41,6 +41,8 @@ ExecStart=/usr/bin/sh -c "source /etc/profile.d/etcdctl.sh && \
     -e CP_PROXY_RESTART_SCRIPT=$(/home/core/ethos-systemd/v1/lib/etcdauth.sh get /capcom/config/proxy-restart-script) \
     -e CP_PROXY_TIMEOUT=$(/home/core/ethos-systemd/v1/lib/etcdauth.sh get /capcom/config/proxy-timeout) \
     -e CP_SSL_CERT_LOCATION=$(/home/core/ethos-systemd/v1/lib/etcdauth.sh get /capcom/config/ssl-cert-location) \
+    -e CP_EMBARGOED_IPS_FILE=/embargoed_ips.txt \
+    -e CP_EMBARGO_CONFIG_FILE=blockembargoips.conf \
     $($IMAGE)"
 
 ExecStop=-/usr/bin/docker stop capcom
