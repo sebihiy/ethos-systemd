@@ -20,7 +20,7 @@ etcd-set /images/chronos                "index.docker.io/mesosphere/chronos:chro
 etcd-set /images/flight-director        "index.docker.io/behance/flight-director:8b6437aef8f251328fe60c9c69d5eabcccb4689d"
 etcd-set /images/marathon               "index.docker.io/mesosphere/marathon:v1.3.10"
 etcd-set /images/mesos-master           "index.docker.io/mesosphere/mesos-master:1.0.1-2.0.93.ubuntu1404"
-etcd-set /images/zk-exhibitor           "index.docker.io/behance/docker-zk-exhibitor:v1.0.0"
+etcd-set /images/zk-exhibitor           "index.docker.io/behance/docker-zk-exhibitor:v1.1.0-java8"
 etcd-set /images/cfn-signal             "index.docker.io/behance/docker-cfn-bootstrap:v1.0.0"
 etcd-set /images/jenkins                "index.docker.io/jenkins:1.651.1"
 etcd-set /images/booster                "index.docker.io/behance/booster:0.9"

@@ -29,6 +29,7 @@ ExecStartPre=-/usr/bin/docker rm marathon
 ExecStart=/usr/bin/sh -c "/usr/bin/docker run \
   --name marathon \
   -e LIBPROCESS_PORT=9090 \
+  --env JAVA_OPTS=\"-XX:+PrintCommandLineFlags -XX:+PrintGC -XX:+PrintGCCause -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -XX:+PrintGCApplicationConcurrentTime -XX:+PrintGCApplicationStoppedTime -XX:+PrintTenuringDistribution -XX:+PrintAdaptiveSizePolicy -Xmx1g -Xms1g -XX:+AlwaysPreTouch -Xss512k\" \
   --net=host \
   -v /opt/mesos/framework-secret:/opt/mesos/framework-secret:ro \
   $($IMAGE) \
